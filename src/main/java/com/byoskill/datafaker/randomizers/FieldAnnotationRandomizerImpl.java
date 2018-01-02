@@ -46,7 +46,7 @@ public class FieldAnnotationRandomizerImpl<A extends Annotation> implements Rand
     public final Object getRandomValue(final Object bean, final String propertyName) {
 	final Optional<A> annotation = FakerBeanUtils.findAnnotation(BeanPropertyKey.of(bean, propertyName),
 		annotationClass);
-	return randomizer.getRandomValue(bean, propertyName, annotation.get());
+	return randomizer.getRandomValueForFieldAnnotation(bean, propertyName, annotation.get());
     }
 
 }

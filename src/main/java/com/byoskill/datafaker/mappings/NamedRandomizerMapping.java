@@ -8,7 +8,6 @@ import java.util.Map;
 import java.util.Optional;
 
 import com.byoskill.datafaker.exceptions.OverridedRandomizerException;
-import com.byoskill.datafaker.randomizers.NamedRandomizer;
 import com.byoskill.datafaker.randomizers.Randomizer;
 
 /**
@@ -20,17 +19,7 @@ public class NamedRandomizerMapping {
     /** The mapping. */
     private final Map<String, Randomizer> mapping = new HashMap<>();
 
-    /**
-     * Declare a new randomizer
-     *
-     * @param name
-     *            the name
-     * @param addressAnnotationRandomizer
-     *            the randomizer
-     */
-    public void declare(final String name, final NamedRandomizer addressAnnotationRandomizer) {
 
-    }
 
     /**
      * Declare a new randomizer

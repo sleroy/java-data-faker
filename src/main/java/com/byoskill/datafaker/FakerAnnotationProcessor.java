@@ -80,7 +80,12 @@ public class FakerAnnotationProcessor {
 		    Faker.class);
 	    final String pickedRandomizer = annotation.get().value();
 	    if (StringUtils.isNotBlank(pickedRandomizer)) {
-		return randomizerRegistry.getRandomizerWithName(pickedRandomizer);
+		final Optional<Randomizer> randomizerWithName = randomizerRegistry.getRandomizerWithName(pickedRandomizer);
+		if (randomizerWithName.isPresent()) {
+		    return Optional.of(new FieldPropertyOverridenRandomizer(propertyName, pickedRandomizer, randomizerWithName.get()));
+		} else {
+		    return Optional.empty();
+		}
 	    } else {
 		return randomizerRegistry.guessRandomizerWithPropertyName(beanPropertyKey);
 	    }

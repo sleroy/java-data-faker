@@ -31,7 +31,7 @@ public class TypeAnnotationMappings {
 	    throw new OverridedRandomizerException("A randomizer for the annotation {0} is already present",
 		    annotationClass);
 	}
-	mapping.put(annotationClass, (bean, propertyName) -> annotationRandomizer.getRandomValue(bean, propertyName,
+	mapping.put(annotationClass, (bean, propertyName) -> annotationRandomizer.getRandomValueForTypeAnnotation(bean, propertyName,
 		bean.getClass().getAnnotation(annotationClass)));
     }
 

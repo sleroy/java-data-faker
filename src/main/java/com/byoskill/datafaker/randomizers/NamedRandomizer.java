@@ -3,19 +3,7 @@
  */
 package com.byoskill.datafaker.randomizers;
 
-public interface NamedRandomizer {
-
-    /**
-     * Returns a random value for the given bean and property
-     *
-     * @param bean
-     *            the bean
-     * @param propertyName
-     *            the property name
-     * @return the instance or a cloned one depending of the randomizer
-     *         implementation
-     */
-    public Object getRandomValue(Object bean, String propertyName);
+public interface NamedRandomizer extends Randomizer {
 
     /**
      * Gets the supported names.

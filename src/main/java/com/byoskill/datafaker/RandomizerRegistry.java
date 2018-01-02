@@ -46,6 +46,21 @@ public class RandomizerRegistry {
 	configuration.init(new IRandomizerMappingDeclarations() {
 
 
+	    /**
+	     * Declares annotation randomizer.
+	     *
+	     * @param <A> the generic type of the annotatoin
+	     * @param <T> the generic type of the implementation
+	     * @param annotationclass the annotationclass
+	     * @param randomizer the randomizer
+	     */
+	    @Override
+	    public <A extends Annotation, T extends NamedRandomizer & FieldAnnotationRandomizer<A> & TypeAnnotationRandomizer<A> > void declaresAnnotationRandomizer(final Class<A> annotationclass, final T randomizer) {
+		declaresFieldAnnotationRandomizer(annotationclass, randomizer);
+		declaresTypeAnnotationRandomizer(annotationclass, randomizer);
+		declaresNamedRandomizer(randomizer);
+	    }
+
 	    @Override
 	    public void declaresBeanPropertyRandomizer(final BeanPropertyKey beanPropertyKey,
 		    final BeanPropertyRandomizer randomizer) {
@@ -61,9 +76,9 @@ public class RandomizerRegistry {
 	    }
 
 	    @Override
-	    public void declaresNamedRandomizer(final NamedRandomizer addressAnnotationRandomizer) {
-		for (final String supportedName : addressAnnotationRandomizer.getSupportedNames()) {
-		    namedRandomizerMapping.declare(supportedName, addressAnnotationRandomizer);
+	    public void declaresNamedRandomizer(final NamedRandomizer randomizer) {
+		for (final String supportedName : randomizer.getSupportedNames()) {
+		    namedRandomizerMapping.declare(supportedName, randomizer);
 		}
 
 	    }
@@ -78,13 +93,13 @@ public class RandomizerRegistry {
 		    final TypeAnnotationRandomizer<A> annotationRandomizer) {
 		typeAnnotationMappings.declare(annotationClass, annotationRandomizer);
 
-	    }
-
-	    @Override
+	    } @Override
 	    public void declaresTypeRandomizer(final Class<?> implementation, final Randomizer randomizer) {
 		typeRandomizerMapping.declare(implementation, randomizer);
 
 	    }
+
+
 	});
 
     }

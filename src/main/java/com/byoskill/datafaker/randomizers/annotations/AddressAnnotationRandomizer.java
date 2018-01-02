@@ -96,8 +96,13 @@ implements TypeAnnotationRandomizer<Address>, FieldAnnotationRandomizer<Address>
     }
 
     @Override
-    public Object getRandomValue(final Object bean, final String propertyName, final Address annotation) {
+    public Object getRandomValueForFieldAnnotation(final Object bean, final String propertyName, final Address annotation) {
 	//
+	return getRandomValue(bean, annotation.value().isEmpty() ? propertyName : annotation.value());
+    }
+
+    @Override
+    public Object getRandomValueForTypeAnnotation(final Object bean, final String propertyName, final Address annotation) {
 	return getRandomValue(bean, annotation.value().isEmpty() ? propertyName : annotation.value());
     }
 

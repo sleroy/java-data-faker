@@ -22,5 +22,5 @@ public interface TypeAnnotationRandomizer<A extends Annotation> {
      * @return the instance or a cloned one depending of the randomizer
      *         implementation
      */
-    public Object getRandomValue(Object bean, String propertyName, A annotation);
+    public Object getRandomValueForTypeAnnotation(Object bean, String propertyName, A annotation);
 }

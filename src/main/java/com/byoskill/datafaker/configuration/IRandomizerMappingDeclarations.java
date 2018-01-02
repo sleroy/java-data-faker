@@ -19,6 +19,16 @@ import com.byoskill.datafaker.randomizers.TypeAnnotationRandomizer;
 public interface IRandomizerMappingDeclarations {
 
     /**
+     * Declares annotation randomizer.
+     *
+     * @param <A> the generic type of the annotatoin
+     * @param <T> the generic type of the implementation
+     * @param annotationclass the annotationclass
+     * @param randomizer the randomizer
+     */
+    <A extends Annotation, T extends NamedRandomizer & FieldAnnotationRandomizer<A> & TypeAnnotationRandomizer<A> > void declaresAnnotationRandomizer(Class<A> annotationclass, T randomizer);
+
+    /**
      * Declares a randomizer specific for a property of a bean.
      *
      * @param beanPropertyKey
