@@ -6,9 +6,13 @@ package com.byoskill.datafaker.configuration;
 import java.util.Locale;
 
 import com.byoskill.datafaker.annotations.Address;
+import com.byoskill.datafaker.annotations.Business;
 import com.byoskill.datafaker.annotations.Color;
+import com.byoskill.datafaker.annotations.Company;
 import com.byoskill.datafaker.randomizers.annotations.AddressAnnotationRandomizer;
+import com.byoskill.datafaker.randomizers.annotations.BusinessAnnotationRandomizer;
 import com.byoskill.datafaker.randomizers.annotations.ColorAnnotationRandomizer;
+import com.byoskill.datafaker.randomizers.annotations.CompanyAnnotationRandomizer;
 import com.github.javafaker.Faker;
 
 public class DefaultFakerConfiguration extends FakerConfiguration {
@@ -40,6 +44,9 @@ public class DefaultFakerConfiguration extends FakerConfiguration {
 
 	declarations.declaresAnnotationRandomizer(Address.class, new AddressAnnotationRandomizer(FAKER));
 	declarations.declaresAnnotationRandomizer(Color.class, new ColorAnnotationRandomizer(FAKER));
+	declarations.declaresAnnotationRandomizer(Business.class, new BusinessAnnotationRandomizer(FAKER));
+	declarations.declaresAnnotationRandomizer(Company.class, new CompanyAnnotationRandomizer(FAKER));
+
 
 
     }
